@@ -1,0 +1,141 @@
+# ─────────────────────────────────────────────────────────────────────────────
+#  MekongTunnel reel — 7 scenes, ~25s total
+#  Brand: warm beige/cream bg, gold-orange accent (#C58A2B), clean SaaS style
+# ─────────────────────────────────────────────────────────────────────────────
+
+scenes:
+
+  # ── Scene 1 ─────────────────────────────────────────────  0s – 3s
+  - id: scene_01
+    duration: 3
+    caption: "Search MekongTunnel"
+    prompt: >
+      Google search results page, clean light theme, white background,
+      warm cream tones, minimal browser UI, modern sans-serif typography,
+      search bar with rounded corners, subtle shadow, soft studio lighting,
+      8k, photorealistic, vertical 9:16 smartphone screen,
+      professional product screenshot aesthetic
+    negative_prompt: >
+      neon, cyberpunk, dark heavy contrast, blurry text, distorted UI,
+      messy layout, watermark, low quality
+    overlay:
+      type: google_search
+      query: "mekongtunnel.dev"
+      result_title: "MekongTunnel — Expose your local server in one command"
+      result_url: "www.mekongtunnel.dev"
+      animate_typing: true
+      click_animation: true
+
+  # ── Scene 2 ─────────────────────────────────────────────  3s – 6s
+  - id: scene_02
+    duration: 3
+    caption: "One command. No config."
+    prompt: >
+      Beautiful SaaS website hero section, warm beige and cream gradient background,
+      gold-orange accent colors, clean modern typography, rounded card UI elements,
+      soft warm highlights, minimal professional layout, hero heading text area,
+      gentle zoom pan motion feel, 8k, photorealistic, vertical 9:16
+    negative_prompt: >
+      neon, cyberpunk, dark heavy contrast, blurry text, watermark, clutter
+    overlay:
+      type: hero_card
+      heading: "Expose your local server"
+      subheading: "in one command"
+
+  # ── Scene 3 ─────────────────────────────────────────────  6s – 10s
+  - id: scene_03
+    duration: 4
+    caption: "One command"
+    prompt: >
+      Elegant dark terminal, warm charcoal background (not harsh black),
+      soft amber-gold monospace text, premium developer tool aesthetic,
+      subtle warm glow on monitor, clean minimal coding environment,
+      soft depth of field, cinematic warm lighting, 8k, photorealistic, vertical 9:16
+    negative_prompt: >
+      neon green, cyberpunk, harsh contrast, blurry, clutter, watermark
+    overlay:
+      type: terminal_command
+      lines:
+        - "$ mekong 3000"
+      animate_typing: true
+      cursor_blink: true
+
+  # ── Scene 4 ─────────────────────────────────────────────  10s – 15s
+  - id: scene_04
+    duration: 5
+    caption: "Public URL instantly 🚀"
+    prompt: >
+      Dark elegant terminal output, warm charcoal background, gold-orange
+      highlighted URL text, clean monospace font output, server log aesthetic,
+      warm highlight glow on the URL line, premium developer aesthetic,
+      8k, photorealistic, vertical 9:16
+    negative_prompt: >
+      neon, harsh colors, blurry, clutter, watermark
+    overlay:
+      type: terminal_output
+      lines:
+        - "$ mekong 3000"
+        - ""
+        - "  MekongTunnel CLI  v1.0.0"
+        - "  ─────────────────────────────────"
+        - "  Local   :  http://localhost:3000"
+        - "  Public  :  https://myapp.mekong.dev"
+        - ""
+        - "  ✓  Tunnel is live!"
+      highlight_line: 5          # 0-based index of URL line to highlight in gold
+      animate_typing: true
+
+  # ── Scene 5 ─────────────────────────────────────────────  15s – 19s
+  - id: scene_05
+    duration: 4
+    caption: "Share anywhere 🌍"
+    prompt: >
+      Modern browser showing a warm beige cream web app, clean SaaS dashboard,
+      gold-orange accent buttons, rounded card elements, soft gradients,
+      premium minimal UI, address bar visible with URL, soft focus depth,
+      warm studio lighting, 8k, photorealistic, vertical 9:16
+    negative_prompt: >
+      neon, dark heavy contrast, blurry, clutter, watermark
+    overlay:
+      type: browser_url
+      url: "https://myapp.mekong.dev"
+
+  # ── Scene 6 ─────────────────────────────────────────────  19s – 22s
+  - id: scene_06
+    duration: 3
+    caption: "Monitor. Deploy. Done."
+    prompt: >
+      Elegant dark terminal, warm charcoal background, clean monospace text,
+      amber-gold highlighted commands, professional developer aesthetic,
+      fast command flash feel, cinematic, 8k, photorealistic, vertical 9:16
+    negative_prompt: >
+      neon, harsh, blurry, watermark
+    overlay:
+      type: terminal_multi
+      sequences:
+        - lines: ["$ mekong ps"]
+          hold_frames: 20
+        - lines: ["$ mekong ps", "  myapp   live   https://myapp.mekong.dev"]
+          hold_frames: 28
+        - lines: ["$ mekong deploy ./project"]
+          hold_frames: 24
+        - lines: ["$ mekong deploy ./project", "  Deploying... ✓ Done"]
+          hold_frames: 20
+
+  # ── Scene 7 ─────────────────────────────────────────────  22s – 25s
+  - id: scene_07
+    duration: 3
+    caption: ""
+    prompt: >
+      Minimalist premium end card, soft warm beige cream gradient background,
+      centered clean typography area, subtle gold warm glow vignette,
+      professional brand card aesthetic, no clutter, calm and elegant,
+      8k, vertical 9:16
+    negative_prompt: >
+      neon, cyberpunk, dark, blurry, watermark, clutter
+    overlay:
+      type: end_card
+      lines:
+        - "MekongTunnel CLI"
+        - "localhost → public in one command"
+        - "www.mekongtunnel.dev"

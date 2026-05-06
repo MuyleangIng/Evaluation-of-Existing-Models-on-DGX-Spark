@@ -1,0 +1,26 @@
+# ── PyTorch (install manually first with correct CUDA build, see README) ──────
+# pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu124
+
+# ── Diffusion / generation ───────────────────────────────────────────────────
+diffusers>=0.27.0
+transformers>=4.38.0
+accelerate>=0.27.0
+safetensors>=0.4.2
+xformers>=0.0.29
+huggingface_hub>=0.21.0
+einops>=0.7.0
+omegaconf>=2.3.0
+
+# ── Video / image ────────────────────────────────────────────────────────────
+imageio>=2.34.0
+imageio-ffmpeg>=0.4.9
+opencv-python>=4.9.0.80
+Pillow>=10.2.0
+numpy>=1.26.0
+moviepy>=1.0.3
+
+# ── CLI / config ─────────────────────────────────────────────────────────────
+PyYAML>=6.0.1
+click>=8.1.7
+tqdm>=4.66.2
+rich>=13.7.0

@@ -1,0 +1,85 @@
+# ─────────────────────────────────────────────────────────────────────────────
+#  VDO-GEN  ·  MekongTunnel product reel
+#  Brand: warm beige/cream, gold-orange accent, clean SaaS minimal style
+# ─────────────────────────────────────────────────────────────────────────────
+
+output:
+  width: 1080
+  height: 1920
+  fps: 24
+  format: mp4
+  dir: output
+  final_filename: mekongtunnel_reel.mp4
+
+# ── Model selection ──────────────────────────────────────────────────────────
+# Options:
+#   animatediff   – AnimateDiff v3 (recommended, ~8 GB VRAM per GPU)
+#   wan           – Wan2.1-T2V-1.3B  (lowest VRAM, good motion)
+#   svd           – Stable Video Diffusion xt-1-1 (image→video)
+model:
+  name: animatediff          # animatediff | wan | svd
+  device: cuda
+  # Multi-GPU: assign one scene per GPU in parallel
+  gpu_ids: [0, 1, 2]
+  offload_to_cpu: false      # set true if VRAM < 16 GB per card
+
+animatediff:
+  base_model: "emilianJR/epiCRealism"
+  motion_adapter: "guoyww/animatediff-motion-adapter-v1-5-3"
+  num_frames: 16
+  inference_steps: 25
+  guidance_scale: 7.5
+
+wan:
+  model_id: "Wan-AI/Wan2.1-T2V-1.3B"
+  num_frames: 16
+  inference_steps: 20
+  guidance_scale: 5.0
+
+svd:
+  model_id: "stabilityai/stable-video-diffusion-img2vid-xt-1-1"
+  num_frames: 25
+  motion_bucket_id: 127
+  noise_aug_strength: 0.02
+
+# ── Global generation defaults ───────────────────────────────────────────────
+generation:
+  seed: 42
+  negative_prompt: >
+    neon colors, cyberpunk style, dark heavy contrast, blurry text,
+    distorted UI, messy layout, unreadable terminal, watermark, logo,
+    bad anatomy, mutation, deformed, low resolution, out of frame, cropped
+
+# ── Brand palette ────────────────────────────────────────────────────────────
+brand:
+  bg_primary: "#F5F0E8"       # warm beige / cream
+  bg_secondary: "#EDE5D5"     # slightly darker cream
+  bg_gradient_start: "#F7F2EA"
+  bg_gradient_end: "#EAE0CC"
+  accent_gold: "#C58A2B"      # primary gold/orange accent
+  accent_light: "#E0A84A"     # lighter gold for highlights
+  accent_glow: "#D4972088"    # semi-transparent gold for glow
+  text_primary: "#2C2416"     # very dark warm brown (headings)
+  text_secondary: "#5C4A2A"   # medium brown (body)
+  text_light: "#8C7A55"       # light warm brown (captions)
+  terminal_bg: "#1C1A16"      # warm charcoal (not pure black)
+  terminal_text: "#C58A2B"    # gold monospace text
+  terminal_highlight: "#E0A84A"
+  white: "#FFFFFF"
+
+# ── Overlay / caption style ──────────────────────────────────────────────────
+overlay:
+  font_size: 52
+  caption_color: "#2C2416"
+  caption_bg_color: "#F5F0E8CC"   # warm beige semi-transparent
+  caption_position: bottom
+  terminal_font_size: 36
+  # (font paths resolved at runtime from system)
+
+# ── Stitch settings ──────────────────────────────────────────────────────────
+stitch:
+  transition_frames: 10        # crossfade length in frames
+  music: null                  # path to optional background audio
+
+# ── Scenes file ──────────────────────────────────────────────────────────────
+scenes_file: prompts/scenes.yaml

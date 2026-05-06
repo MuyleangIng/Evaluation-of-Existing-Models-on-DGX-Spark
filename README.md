@@ -1,7 +1,6 @@
-# vdo-gen — MekongTunnel Product Reel Generator
+# Evaluation of Existing Models on the DGX
 
-Local Python pipeline that generates a **25-second vertical 9:16 product demo video**
-for MekongTunnel CLI using open-source AI video models and GPU-accelerated inference.
+Research testing project for evaluating existing open-source AI video models on the DGX.
 
 Brand style: warm beige/cream background · gold-orange accent (`#C58A2B`) · clean SaaS minimal.
 
@@ -11,7 +10,7 @@ Brand style: warm beige/cream background · gold-orange accent (`#C58A2B`) · cl
 
 | Component | Minimum | Recommended |
 |-----------|---------|-------------|
-| GPU | 1× RTX 3090 (24 GB) | 3× RTX 4090 (72 GB total) |
+| GPU | NVIDIA DGX | NVIDIA DGX |
 | RAM | 32 GB | 64 GB |
 | Storage | 40 GB free | 80 GB free |
 | OS | Ubuntu 20.04+ / macOS 13+ | Ubuntu 22.04 |
@@ -24,8 +23,8 @@ Brand style: warm beige/cream background · gold-orange accent (`#C58A2B`) · cl
 ### 1 — Clone and create environment
 
 ```bash
-git clone https://github.com/yourname/vdo-gen
-cd vdo-gen
+git clone git@github.com:MuyleangIng/Evaluation-of-Existing-Models-on-DGX-Spark.git
+cd Evaluation-of-Existing-Models-on-DGX-Spark
 python3 -m venv .venv
 source .venv/bin/activate
 ```
@@ -89,7 +88,7 @@ EOF
 ## Project Structure
 
 ```
-vdo-gen/
+Evaluation-of-Existing-Models-on-DGX-Spark/
 ├── generate.py          # Generate per-scene clips (AI model + overlays)
 ├── stitch_video.py      # Assemble clips into final reel
 ├── config.yaml          # Model, output, brand, overlay settings
@@ -245,7 +244,7 @@ source .venv/bin/activate
 # Preview the scene plan
 python generate.py --dry-run
 
-# Generate all clips (parallel, 3× RTX 4090)
+# Generate all clips on the DGX
 python generate.py
 
 # Assemble final reel with 10-frame crossfades
